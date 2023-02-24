@@ -1,0 +1,26 @@
+---
+title: "Cornell-DataScience"
+author: "Ramesh Chellaton"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r install Hmisc package which includes titanic dataset}
+#install.packages('Hmisc')
+library(Hmisc)
+library(ggplot2)
+```
+```{r get data}
+getHdata(titanic3)
+```
+##### univariate and bivariate summary
+```{r}
+plot(survived~sex, data=titanic3, col=c('salmon','steelblue'))
+g <- ggplot(data=titanic3, aes(x=pclass, fill=sex))
+g <- g + geom_bar()
+print(g)
+```
